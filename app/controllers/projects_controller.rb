@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
             render json: project
         else
             render json: {
-                reasons: project.errors.full_messages
+                reasons: project.errors
             }, status: :unprocessable_entity
         end
     end
