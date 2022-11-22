@@ -1,23 +1,13 @@
 class Project < ApplicationRecord
+    include Assignable
+    acts_as_employee_data :owner_id, :manager
+
     has_many :project_participants
 
     accepts_nested_attributes_for :project_participants, allow_destroy: true
 
     validates :name, :state, :owner_id, presence: true
     validates_length_of :name , maximum: 255
-    validate :owner_is_manager?
 
     enum state: { planned: 0, active: 1, done: 2, failed: 3 }
-
-    def owner_is_manager?
-        employee = EmployeeService.get_employee_by_id(owner_id)
-        unless employee
-            errors.add(:project, 'Manager id is not found')
-            return false
-        end
-        if (employee['role'] != 'manager')
-            errors.add(:project, 'Owner must be a manager')
-        end
-        return employee['role'] == 'manager'
-    end
 end
