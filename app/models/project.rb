@@ -1,10 +1,12 @@
 class Project < ApplicationRecord
     has_many :project_participants
+    
     accepts_nested_attributes_for :project_participants, allow_destroy: true
 
     validates :name, :state, :owner_id, presence: true
     validates_length_of :name , maximum: 255
     validate :owner_is_manager?
+
     enum state: { planned: 0, active: 1, done: 2, failed: 3 }
 
     def owner_is_manager?
