@@ -8,6 +8,10 @@ class ProjectParticipant < ApplicationRecord
 
     def participant_is_employee?
         employee = EmployeeService.get_employee_by_id(participant_id)
+        unless employee
+            errors.add(:project, 'Participant id is not found')
+            return false
+        end
         if (employee['role'] != 'employee')
             errors.add(:project, 'Participant must be an employee')
         end
