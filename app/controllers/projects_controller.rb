@@ -1,16 +1,17 @@
 class ProjectsController < ApplicationController
     include ProjectsHelper
 
-    before_action :set_project, only: [:update, :assign_participants]
-
     def index
-        @projects = Project.all
-        render json: { insights: calculate_projects_insights , projects: @projects }
+        @projects = ProjectService.get_all
+        render json: {
+            insights: calculate_projects_insights, 
+            projects: ActiveModelSerializers::SerializableResource.new(@projects, each_serializer: ProjectSerializer)
+        }
     end
 
     def create
-        project = Project.new(project_params)
-        if project.save
+        project = ProjectService.create_new_project(project_params)
+        unless project.id == nil
             render json: project
         else
             render json: {
@@ -20,22 +21,24 @@ class ProjectsController < ApplicationController
     end
 
     def update
-        if @project.update(project_params)
-            render json: @project
+        project = ProjectService.update_existing_project(params[:id], project_params)
+        if project
+            handle_response(project)
         else
             render json: {
-                reasons: @project.errors
-            }, status: :unprocessable_entity
+                reasons: "Project not found"
+            }, status: :not_found
         end
     end
 
     def assign_participants
-        if @project.update(project_participants_params)
-            render json: @project
+        project = ProjectService.assign_participants_to_project(params[:id], project_participants_params)
+        if project
+            handle_response(project)
         else
             render json: {
-                reasons: @project.errors
-            }, status: :unprocessable_entity
+                reasons: "Project not found"
+            }, status: :not_found
         end
     end
 
@@ -49,8 +52,13 @@ class ProjectsController < ApplicationController
         params.permit(project_participants_attributes: [:id, :_destroy, :participant_id])
     end
 
-    def set_project
-        @project = Project.find(params[:id])
-        render :status => 404 if @project.nil?
+    def handle_response project
+        if project.errors.count > 0
+            render json: {
+                reasons: project.errors
+            }, status: :unprocessable_entity
+        else
+            render json: project
+        end
     end
 end
