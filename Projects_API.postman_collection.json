@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "d98be3c3-d33f-44f8-9415-df684fd4aebd",
-		"name": "Projects API",
+		"name": "Projects_API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -31,7 +31,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"project\": {\n        \"name\": \"test-api\",\n        \"state\": \"planned\",\n        \"owner_id\": \"9aec2652-d62d-429b-9650-03ed723ef51a\"\n    }\n}",
+					"raw": "{\n    \"project\": {\n        \"name\": \"project-test\",\n        \"state\": \"active\",\n        \"owner_id\": \"e07c895f-638a-43a4-96c6-2cffdbc3f2fb\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -39,15 +39,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/projects/",
+					"raw": "http://localhost:3000/projects",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"projects",
-						""
+						"projects"
 					]
 				}
 			},
@@ -60,7 +59,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"project\": {\n        \"name\": \"test-api-updated\",\n        \"state\": \"planned\",\n        \"owner_id\": \"9aec2652-d62d-429b-9650-03ed723ef51a\"\n    }\n}",
+					"raw": "{\n    \"project\": {\n        \"name\": \"test-api-updated\",\n        \"state\": \"planned\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -68,7 +67,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/projects/11",
+					"raw": "http://localhost:3000/projects/30",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -76,37 +75,7 @@
 					"port": "3000",
 					"path": [
 						"projects",
-						"11"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Unassign participants from a project",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"project_participants_attributes\": [\n            {\n                \"id\": 1,\n                \"_destroy\":true\n            },\n            {\n                \"id\": 2,\n                \"_destroy\":true\n            }\n    ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/projects/11/assign_participants",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"projects",
-						"11",
-						"assign_participants"
+						"30"
 					]
 				}
 			},
@@ -127,7 +96,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/projects/11/assign_participants",
+					"raw": "http://localhost:3000/projects/30/assign_participants",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -135,7 +104,37 @@
 					"port": "3000",
 					"path": [
 						"projects",
-						"11",
+						"30",
+						"assign_participants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unassign participants from a project",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"project_participants_attributes\": [\n            {\n                \"id\": 13,\n                \"_destroy\":true\n            },\n            {\n                \"id\": 14,\n                \"_destroy\":true\n            }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/projects/30/assign_participants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"projects",
+						"30",
 						"assign_participants"
 					]
 				}
