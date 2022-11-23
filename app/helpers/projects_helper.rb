@@ -18,6 +18,10 @@ module ProjectsHelper
     private
     
     def calculate_percentage project_state, total_projects
-        "#{(@projects.select{ |project| project.state == project_state.to_s }.count * 100.0 / total_projects).round(2)}%"
+        if total_projects == 0
+            "0%"
+        else
+            "#{(@projects.select{ |project| project.state == project_state.to_s }.count * 100.0 / total_projects).round(2)}%"
+        end
     end
 end
