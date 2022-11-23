@@ -67,7 +67,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/projects/30",
+					"raw": "http://localhost:3000/projects/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -75,7 +75,7 @@
 					"port": "3000",
 					"path": [
 						"projects",
-						"30"
+						"1"
 					]
 				}
 			},
@@ -96,7 +96,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/projects/30/assign_participants",
+					"raw": "http://localhost:3000/projects/1/assign_participants",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -104,7 +104,7 @@
 					"port": "3000",
 					"path": [
 						"projects",
-						"30",
+						"1",
 						"assign_participants"
 					]
 				}
@@ -118,7 +118,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"project_participants_attributes\": [\n            {\n                \"id\": 13,\n                \"_destroy\":true\n            },\n            {\n                \"id\": 14,\n                \"_destroy\":true\n            }\n    ]\n}",
+					"raw": "{\n    \"project_participants_attributes\": [\n            {\n                \"id\": 1,\n                \"_destroy\":true\n            },\n            {\n                \"id\": 2,\n                \"_destroy\":true\n            }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -126,7 +126,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/projects/30/assign_participants",
+					"raw": "http://localhost:3000/projects/1/assign_participants",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -134,7 +134,7 @@
 					"port": "3000",
 					"path": [
 						"projects",
-						"30",
+						"1",
 						"assign_participants"
 					]
 				}
