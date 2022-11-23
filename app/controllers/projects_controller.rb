@@ -1,9 +1,11 @@
 class ProjectsController < ApplicationController
+    include ProjectsHelper
+
     before_action :set_project, only: [:update, :assign_participants]
 
     def index
-        projects = Project.all
-        render json: projects
+        @projects = Project.all
+        render json: { insights: calculate_projects_insights , projects: @projects }
     end
 
     def create
