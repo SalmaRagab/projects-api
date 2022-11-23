@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "d98be3c3-d33f-44f8-9415-df684fd4aebd",
+		"name": "Projects API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new project",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"project\": {\n        \"name\": \"test-api\",\n        \"state\": \"planned\",\n        \"owner_id\": \"9aec2652-d62d-429b-9650-03ed723ef51a\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/projects/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"projects",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update project",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"project\": {\n        \"name\": \"test-api-updated\",\n        \"state\": \"planned\",\n        \"owner_id\": \"9aec2652-d62d-429b-9650-03ed723ef51a\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/projects/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"projects",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unassign participants from a project",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"project_participants_attributes\": [\n            {\n                \"id\": 1,\n                \"_destroy\":true\n            },\n            {\n                \"id\": 2,\n                \"_destroy\":true\n            }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/projects/11/assign_participants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"projects",
+						"11",
+						"assign_participants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign participants to a project",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"project_participants_attributes\": [\n            {\n                \"participant_id\": \"d44bcda5-5918-47b8-a644-8f030ae875b3\"\n            },\n            {\n                \"participant_id\": \"868beb41-04fb-4546-b9ba-11c1dca6f652\"\n            }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/projects/11/assign_participants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"projects",
+						"11",
+						"assign_participants"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
