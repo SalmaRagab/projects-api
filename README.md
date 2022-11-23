@@ -27,3 +27,7 @@ Server will be running on ```http://localhost:3000```
         - Owner id must be a valid employee id and his role is "_manager_"
         - Participant id must be a valid employee id and his role is "_employee_"
         - Uniqeness of participant on the project scope
+## Future improvements
+- Response errors handling, reasonable status codes and messages
+- Pagination for retrieving the projects, to avoid retrieving all of the projects in one request
+- Add logging using gems like [acts_as_paranoid](https://rubygems.org/gems/acts_as_paranoid/versions/0.4.3) and [paper_trail](https://rubygems.org/gems/paper_trail/versions/11.0.0)
